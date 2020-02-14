@@ -1,0 +1,16 @@
+#
+# Configuration of UniquePrefix plugin.
+#
+
+prefix-format: "&([0-9]|[a-f])(\\p{InHiragana}|\\p{InKatakana}|\\p{InCjkUnifiedIdeographs})"
+
+prefix-set-command: "lp user %player% meta setprefix 1 %prefix%"
+prefix-remove-command: "lp user %player% meta removeprefix 1 %prefix%"
+
+legendary-ticket:
+  display-name: "§6§lレジェンダリーチケット"
+  lore:
+    - "§7"
+    - "§7おこチケ超大当たりで排出されるチケット。"
+    - "§7超レア称号、スポナーなどと交換可能。"
+    - ""

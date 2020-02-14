@@ -1,0 +1,43 @@
+name: ${project.artifactId}
+version: ${project.version}
+main: ${project.groupId}.${project.artifactId}
+author: LazyGon
+api-version: '1.14'
+commands:
+  uniqueprefix:
+    description: "Manipulate Unique prefix."
+    aliases: [upref, prefix]
+
+permissions:
+  uniqueprefix.*:
+    description: Includes all uniqueprefix command's permission.
+    default: op
+    children:
+      uniqueprefix: true
+      uniqueprefix.add: true
+      uniqueprefix.set: true
+      uniqueprefix.remove: true
+      uniqueprefix.list: true
+      uniqueprefix.reload: true
+      uniqueprefix.other: true
+  uniqueprefix:
+    description: Permission for command /uniqueprefix <args...>
+    default: true
+  uniqueprefix.add:
+    description: Permission for command /uniqueprefix add <prefix>
+    default: op
+  uniqueprefix.set:
+    description: Permission for command /uniqueprefix set <number>
+    default: true
+  uniqueprefix.remove:
+    description: Permission for command /uniqueprefix remove <number>
+    default: true
+  uniqueprefix.list:
+    description: Permission for command /uniqueprefix list
+    default: true
+  uniqueprefix.reload:
+    description: Permission for command /uniqueprefix reload
+    default: op
+  uniqueprefix.other:
+    description: Permission for other player argument of /uniqueprefix command
+    default: op

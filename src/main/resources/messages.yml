@@ -1,0 +1,36 @@
+plugin-prefix: "&8[&6UniquePrefix&8]&r"
+
+command:
+  info:
+    usage: "&7使用法: &b%usage%"
+    add-success: "&b%player% &7の称号 &b%prefix% &7をレジェンダリーチケット一枚で購入しました！"
+    remove-success: "&b%player% &7の称号 &b%prefix% &7を削除しました！"
+    set-success: "&b%player% &7に称号 &b%prefix% &7をつけました！"
+    list-header: "&b%player% &7の固有称号"
+    list-line: "&7  - &b%prefix%"
+    help-header: "&7------- &6UniquePrefix ヘルプ &7-------"
+    help-line: "&b%usage% &7- &a%description%"
+    reload: "&7プラグインの設定を再読込しました。"
+  error:
+    invalid-argument: "&c%argument% という引数は存在しません。"
+    no-permission: "&c%permission%の権限がありません"
+    cannot-use-from-console: "&cコンソールからは使えません。"
+    player-cannot-use: "&cコンソールからしか使えません。"
+    not-enough-arguments: "&c引数が足りません。"
+    no-player-found: "&cそのプレイヤーは見つかりませんでした。"
+    no-legendary-ticket: "&cレジェンダリーチケットがありません。"
+    invalid-syntax: "&c称号の構文を間違えています。§f構文: &(0～9 or a～f) + 日本語1文字。例: &9お"
+    player-do-not-have-the-prefix: "&cその称号は &b%player% &7のものではありません！"
+    prefix-is-already-in-use: "&cその称号はすでに使われています。"
+
+    specify-player: "&cプレイヤーを指定してください。"
+    player-is-not-online: "&cそのプレイヤーはオンラインではありません。"
+    invalid-number: "&c不正な数字が入力されました。"
+
+  description:
+    uniqueprefix: "&7固有称号を操作します。"
+    add: "&7レジェチケを消費して固有称号を追加します。"
+    remove: "&7固有称号を手放します。"
+    list: "&7保有する固有称号を表示します。"
+    reload: "&7プラグインを再読込します。"
+    set: "&7固有称号をセットします。"
