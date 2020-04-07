@@ -79,7 +79,7 @@ public final class AddCommand extends BaseCommand {
             }
         } else {            
             if (args.length == 2) {
-                return StringUtil.copyPartialMatches(args[2], List.of("&fあ", "&9怒"), new ArrayList<>());
+                return StringUtil.copyPartialMatches(args[1], List.of("&fあ", "&9怒"), new ArrayList<>());
             }
         }
 
