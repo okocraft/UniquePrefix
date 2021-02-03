@@ -1,4 +1,4 @@
-package net.okocraft.uniqueprefix.config;
+package net.okocraft.affix.config;
 
 import java.util.List;
 import java.util.Objects;
@@ -10,12 +10,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
+import net.okocraft.affix.AffixPlugin;
+
+/**
+ * @deprecated UniquePrefixからの移行のためだけに残しているクラス。それ以外の目的で使われるべきではない。
+ */
+@Deprecated
 public final class PrefixData extends CustomConfig {
 
     private static final PrefixData INSTANCE = new PrefixData();
 
     private PrefixData() {
-        super("data.yml");
+        super(AffixPlugin.getPlugin(AffixPlugin.class), "data.yml");
     }
 
     public static PrefixData getInstance() {
@@ -73,8 +79,8 @@ public final class PrefixData extends CustomConfig {
             } catch (IllegalArgumentException e) {
                 return null;
             }
-        }).filter(Objects::nonNull).map(Bukkit::getOfflinePlayer)
-        .filter(OfflinePlayer::hasPlayedBefore).collect(Collectors.toSet());
+        }).filter(Objects::nonNull).map(Bukkit::getOfflinePlayer).filter(OfflinePlayer::hasPlayedBefore)
+                .collect(Collectors.toSet());
     }
 
     public List<String> getPrefixes(OfflinePlayer player) {

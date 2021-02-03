@@ -1,4 +1,4 @@
-package net.okocraft.uniqueprefix.config;
+package net.okocraft.affix.config;
 
 import java.util.Map;
 import java.util.Optional;
@@ -6,19 +6,15 @@ import java.util.Optional;
 import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.Plugin;
 
-import net.okocraft.uniqueprefix.command.BaseCommand;
+import net.okocraft.affix.affixprice.Price;
+import net.okocraft.affix.command.Command;
 
 public final class Messages extends CustomConfig {
 
-    private static final Messages INSTANCE = new Messages();
-
-    private Messages() {
-        super("messages.yml");
-    }
-
-    public static Messages getInstance() {
-        return INSTANCE;
+    Messages(Plugin plugin) {
+        super(plugin, "messages.yml");
     }
 
     /**
@@ -158,9 +154,24 @@ public final class Messages extends CustomConfig {
         sendMessage(sender, "command.info.help-header");
     }
 
-    public void sendHelpLine(CommandSender sender, BaseCommand subCommand) {
+    public void sendHelpLine(CommandSender sender, Command subCommand) {
         sendMessage(sender, false, "command.info.help-line",
                 Map.of("%usage%", subCommand.getUsage(), "%description%", subCommand.getDescription()));
 
     }
+
+	public void sendInvalidSuffixSyntax(CommandSender sender) {
+	}
+
+	public void sendSuffixIsInUse(CommandSender sender) {
+	}
+
+	public void sendSuffixAddSuccess(CommandSender sender, OfflinePlayer player, String suffix) {
+	}
+
+	public void sendDoNotHaveSuffix(CommandSender sender) {
+	}
+
+	public void sendYouCannotBuyIt(CommandSender sender, Price<?> price) {
+	}
 }

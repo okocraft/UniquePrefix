@@ -1,4 +1,4 @@
-plugin-prefix: "&8[&6UniquePrefix&8]&r"
+plugin-prefix: "&8[&6Affix&8]&r"
 
 command:
   info:
@@ -8,7 +8,7 @@ command:
     set-success: "&b%player% &7に称号 &b%prefix% &7をつけました！"
     list-header: "&b%player% &7の固有称号"
     list-line: "&7  - &b%prefix%"
-    help-header: "&7------- &6UniquePrefix ヘルプ &7-------"
+    help-header: "&7------- &6Affix ヘルプ &7-------"
     help-line: "&b%usage% &7- &a%description%"
     reload: "&7プラグインの設定を再読込しました。"
   error:
@@ -28,9 +28,21 @@ command:
     invalid-number: "&c不正な数字が入力されました。"
 
   description:
-    uniqueprefix: "&7固有称号を操作します。"
-    add: "&7レジェチケを消費して固有称号を追加します。"
-    remove: "&7固有称号を手放します。"
-    list: "&7保有する固有称号を表示します。"
-    reload: "&7プラグインを再読込します。"
-    set: "&7固有称号をセットします。"
+    affix:
+      root-command: ""
+      setprice: "TODO"
+      reload: "&7プラグインを再読込します。"
+    prefix:
+      root-command: ""
+      add: "&7レジェチケを消費して固有称号を追加します。"
+      remove: "&7固有称号を手放します。"
+      list: "&7保有する固有称号を表示します。"
+      set: "&7固有称号をセットします。"
+      unset: "&7固有称号をセットします。"
+    suffix:
+      root-command: ""
+      add: "&7レジェチケを消費して固有称号を追加します。"
+      remove: "&7固有称号を手放します。"
+      list: "&7保有する固有称号を表示します。"
+      set: "&7固有称号をセットします。"
+      unset: "&7固有称号をセットします。"

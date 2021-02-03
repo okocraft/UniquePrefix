@@ -1,16 +1,29 @@
 #
-# Configuration of UniquePrefix plugin.
+# Configuration of Affix plugin.
 #
 
-prefix-format: "&([0-9]|[a-f])(\\p{InHiragana}|\\p{InKatakana}|\\p{InCjkUnifiedIdeographs})"
 
-prefix-set-command: "lp user %player% meta setprefix 1 %prefix%"
-prefix-remove-command: "lp user %player% meta removeprefix 1 %prefix%"
+# Database settings
+# sqlite or mysql for databaseType.
+database-type: sqlite
+mysql-user: root
+mysql-pass: password
+mysql-host: 127.0.0.1
+mysql-port: 3306
+mysql-db-name: "affix"
 
-legendary-ticket:
-  display-name: "§6§lレジェンダリーチケット"
-  lore:
-    - "§7"
-    - "§7おこチケ超大当たりで排出されるチケット。"
-    - "§7超レア称号、スポナーなどと交換可能。"
-    - ""
+prefix-priority: 1
+prefix-max-length: 3 # exclude colorcode. 
+prefix-regex-conditions: # prefix must match this regex.
+- "&(([0-9]|[a-f])|#([0-9]|[a-f]){6})*(\\p{InHiragana}|\\p{InKatakana}|\\p{InCjkUnifiedIdeographs})(&(([0-9]|[a-f])|#([0-9]|[a-f]){6})*(\\p{InHiragana}|\\p{InKatakana}|\\p{InCjkUnifiedIdeographs})){0,2}"
+prefix-format: "&7[%prefix%&7]&r"
+prefix-price:
+  type: item
+  item: ""
+
+suffix-priority: 10
+suffix-max-length: 1
+suffix-regex-conditions: []
+suffix-format: "%suffix%&r"
+suffix-price:
+  type: none

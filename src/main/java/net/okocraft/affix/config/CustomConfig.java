@@ -1,4 +1,4 @@
-package net.okocraft.uniqueprefix.config;
+package net.okocraft.affix.config;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,10 +8,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.logging.Level;
 
-import net.okocraft.uniqueprefix.UniquePrefix;
-
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.Plugin;
 
 /**
  * Class for manipulating yaml files.
@@ -20,21 +19,23 @@ import org.bukkit.configuration.file.YamlConfiguration;
  */
 public abstract class CustomConfig {
 
-    private static final UniquePrefix PLUGIN = UniquePrefix.getInstance();
+    private final Plugin plugin;
     private final File file;
     private final String name;
     private FileConfiguration config;
 
-    CustomConfig(String name) {
+    CustomConfig(Plugin plugin, String name) {
+        this.plugin = plugin;
         this.name = name;
-        this.file = new File(PLUGIN.getDataFolder(), this.name);
+        this.file = new File(plugin.getDataFolder(), this.name);
         reload();
         if (file.isDirectory()) {
             throw new IllegalArgumentException("file must not be directory");
         }
     }
 
-    CustomConfig(File file) {
+    CustomConfig(Plugin plugin, File file) {
+        this.plugin = plugin;
         if (!file.isFile()) {
             throw new IllegalArgumentException("file must not be directory");
         }
@@ -65,10 +66,9 @@ public abstract class CustomConfig {
     protected void reload() {
         saveDefault();
         config = YamlConfiguration.loadConfiguration(file);
-        Optional<InputStream> inputStream = Optional.ofNullable(PLUGIN.getResource(name));
-        inputStream.ifPresent(stream -> config.setDefaults(YamlConfiguration.loadConfiguration(
-                new InputStreamReader(stream, StandardCharsets.UTF_8)
-        )));
+        Optional<InputStream> inputStream = Optional.ofNullable(plugin.getResource(name));
+        inputStream.ifPresent(stream -> config.setDefaults(
+                YamlConfiguration.loadConfiguration(new InputStreamReader(stream, StandardCharsets.UTF_8))));
     }
 
     /**
@@ -78,7 +78,7 @@ public abstract class CustomConfig {
      */
     protected void saveDefault() {
         if (!file.exists()) {
-            PLUGIN.saveResource(name, false);
+            plugin.saveResource(name, false);
         }
     }
 
@@ -93,7 +93,7 @@ public abstract class CustomConfig {
         try {
             get().save(file);
         } catch (IOException e) {
-            PLUGIN.getLogger().log(Level.SEVERE, "Could not save config to " + file, e);
+            plugin.getLogger().log(Level.SEVERE, "Could not save config to " + file, e);
         }
     }
 }

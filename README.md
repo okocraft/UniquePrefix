@@ -1,2 +1,2 @@
-# UniquePrefix
-UniquePrefix, to give players unique prefix made by theirselves.
+# Affix
+Manages players prefix and suffix, and provide selection interface.
